@@ -1,0 +1,26 @@
+
+$content_color:white;
+$bg_color:rgb(149, 149, 149);
+$parent_color:rgb(108, 108, 108);
+$bg_active:rgb(92, 92, 92);
+$c_active:rgb(255, 255, 255);
+
+
+@import './tree/tree';
+
+body{
+    margin: 0;
+    background-color: $bg_color;
+}
+
+*{
+    font-family: DejaVu Sans Mono, monospace;
+    transition: all 0.2s;
+}
+
+.App{
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}

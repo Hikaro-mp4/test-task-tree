@@ -1,0 +1,74 @@
+
+@mixin arrow($top,$left,$deg){
+    display: block;
+    top: $top;
+    left: $left;
+    position: absolute;  
+    width: 6px;
+    height: 2px;
+    background-color: black;
+    transform: rotate($deg);
+}
+
+.tree{  
+    background-color:$content_color;
+    display: inline-block;
+    padding: 20px;
+    border-radius:10px ;
+    box-shadow: 2px 2px 8px black;
+    
+    &__name{
+        cursor: pointer;
+        &.parent-style{
+            font-weight: bold;
+            font-size: larger;
+        }
+
+        &.active{
+            color:$c_active;
+            background-color: $bg_active;
+            border-radius:6px;
+        }
+    }
+
+    &__children{
+        display: none;
+        
+        &.active{
+            display: block;
+        }
+    }
+
+    &__branch{
+        margin-left: 20px;
+      
+    }
+
+    &__arrow{
+        position: relative;
+        display: block;
+        
+        &::before{
+            content: '';
+            @include arrow(9px,-10px,45deg)
+        }
+
+        &::after{
+            content: '';
+            @include arrow(12px,-10px,-45deg)
+        }
+
+        &.active{
+            &::before{
+                content: '';
+                @include arrow(12px,-12px,45deg)
+            }
+    
+            &::after{
+                content: '';
+                @include arrow(12px,-9px,-45deg)
+            }
+            
+        }
+    }
+}

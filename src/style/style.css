@@ -1,0 +1,117 @@
+.tree {
+  background-color: white;
+  display: inline-block;
+  padding: 20px;
+  border-radius: 10px;
+  -webkit-box-shadow: 2px 2px 8px black;
+          box-shadow: 2px 2px 8px black;
+}
+
+.tree__name {
+  cursor: pointer;
+}
+
+.tree__name.parent-style {
+  font-weight: bold;
+  font-size: larger;
+}
+
+.tree__name.active {
+  color: white;
+  background-color: #5c5c5c;
+  border-radius: 6px;
+}
+
+.tree__children {
+  display: none;
+}
+
+.tree__children.active {
+  display: block;
+}
+
+.tree__branch {
+  margin-left: 20px;
+}
+
+.tree__arrow {
+  position: relative;
+  display: block;
+}
+
+.tree__arrow::before {
+  content: '';
+  display: block;
+  top: 9px;
+  left: -10px;
+  position: absolute;
+  width: 6px;
+  height: 2px;
+  background-color: black;
+  -webkit-transform: rotate(45deg);
+          transform: rotate(45deg);
+}
+
+.tree__arrow::after {
+  content: '';
+  display: block;
+  top: 12px;
+  left: -10px;
+  position: absolute;
+  width: 6px;
+  height: 2px;
+  background-color: black;
+  -webkit-transform: rotate(-45deg);
+          transform: rotate(-45deg);
+}
+
+.tree__arrow.active::before {
+  content: '';
+  display: block;
+  top: 12px;
+  left: -12px;
+  position: absolute;
+  width: 6px;
+  height: 2px;
+  background-color: black;
+  -webkit-transform: rotate(45deg);
+          transform: rotate(45deg);
+}
+
+.tree__arrow.active::after {
+  content: '';
+  display: block;
+  top: 12px;
+  left: -9px;
+  position: absolute;
+  width: 6px;
+  height: 2px;
+  background-color: black;
+  -webkit-transform: rotate(-45deg);
+          transform: rotate(-45deg);
+}
+
+body {
+  margin: 0;
+  background-color: #959595;
+}
+
+* {
+  font-family: DejaVu Sans Mono, monospace;
+  -webkit-transition: all 0.2s;
+  transition: all 0.2s;
+}
+
+.App {
+  height: 100vh;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+/*# sourceMappingURL=style.css.map */

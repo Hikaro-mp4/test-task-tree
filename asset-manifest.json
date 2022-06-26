@@ -1,10 +1,10 @@
 {
   "files": {
-    "main.css": "/'https://Hikaro-mp4.github.io/test-task-tree/static/css/main.589ef0e1.css",
-    "main.js": "/'https://Hikaro-mp4.github.io/test-task-tree/static/js/main.81d0d53e.js",
-    "index.html": "/'https://Hikaro-mp4.github.io/test-task-tree/index.html",
-    "main.589ef0e1.css.map": "/'https://Hikaro-mp4.github.io/test-task-tree/static/css/main.589ef0e1.css.map",
-    "main.81d0d53e.js.map": "/'https://Hikaro-mp4.github.io/test-task-tree/static/js/main.81d0d53e.js.map"
+    "main.css": "/test-task-tree/static/css/main.589ef0e1.css",
+    "main.js": "/test-task-tree/static/js/main.81d0d53e.js",
+    "index.html": "/test-task-tree/index.html",
+    "main.589ef0e1.css.map": "/test-task-tree/static/css/main.589ef0e1.css.map",
+    "main.81d0d53e.js.map": "/test-task-tree/static/js/main.81d0d53e.js.map"
   },
   "entrypoints": [
     "static/css/main.589ef0e1.css",

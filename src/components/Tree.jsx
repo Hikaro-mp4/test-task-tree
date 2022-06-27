@@ -38,10 +38,12 @@ const Tree = ({data}) => {
             <span 
                 onClick={(e)=>handlerClick(e,id,parentId,children)}
                 className={children?
-                    'tree__name parent-style':
-                        select===id?
-                        'tree__name active':
-                        'tree__name'}
+                        (active===id || checkChildActive(data))?
+                        'tree__name parent-style active':
+                            'tree__name parent-style':
+                            select===id?
+                            'tree__name active':
+                            'tree__name'}
                 >
                    {children &&  
                         <span 

@@ -46,27 +46,34 @@
 
     &__arrow{
         position: relative;
-        display: block;
-        
+        display: inline-block;
+        border-radius:6px;
+        width: 16px;
+        height: 17px;
+
         &::before{
             content: '';
-            @include arrow(9px,-10px,45deg)
+            @include arrow(9px,5px,45deg)
         }
 
         &::after{
             content: '';
-            @include arrow(12px,-10px,-45deg)
+            @include arrow(12px,5px,-45deg)
         }
 
         &.active{
+            background-color: $bg_active;
+           
             &::before{
                 content: '';
-                @include arrow(12px,-12px,45deg)
+                @include arrow(12px,4px,45deg);
+                background-color:$c_active;
             }
     
             &::after{
                 content: '';
-                @include arrow(12px,-9px,-45deg)
+                @include arrow(12px,7px,-45deg);
+                background-color:$c_active;
             }
             
         }

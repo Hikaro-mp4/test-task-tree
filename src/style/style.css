@@ -36,14 +36,17 @@
 
 .tree__arrow {
   position: relative;
-  display: block;
+  display: inline-block;
+  border-radius: 6px;
+  width: 16px;
+  height: 17px;
 }
 
 .tree__arrow::before {
   content: '';
   display: block;
   top: 9px;
-  left: -10px;
+  left: 5px;
   position: absolute;
   width: 6px;
   height: 2px;
@@ -56,39 +59,45 @@
   content: '';
   display: block;
   top: 12px;
-  left: -10px;
+  left: 5px;
   position: absolute;
   width: 6px;
   height: 2px;
   background-color: black;
   -webkit-transform: rotate(-45deg);
           transform: rotate(-45deg);
+}
+
+.tree__arrow.active {
+  background-color: #5c5c5c;
 }
 
 .tree__arrow.active::before {
   content: '';
   display: block;
   top: 12px;
-  left: -12px;
+  left: 4px;
   position: absolute;
   width: 6px;
   height: 2px;
   background-color: black;
   -webkit-transform: rotate(45deg);
           transform: rotate(45deg);
+  background-color: white;
 }
 
 .tree__arrow.active::after {
   content: '';
   display: block;
   top: 12px;
-  left: -9px;
+  left: 7px;
   position: absolute;
   width: 6px;
   height: 2px;
   background-color: black;
   -webkit-transform: rotate(-45deg);
           transform: rotate(-45deg);
+  background-color: white;
 }
 
 body {

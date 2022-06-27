@@ -1,19 +1,27 @@
-import { useEffect, useState } from "react";
+import { useEffect} from "react";
+import { useDispatch, useSelector } from "react-redux";
 import { getTreeData } from "./Api/treeApi";
 import Tree from "./components/Tree";
+import { setTreeAction } from "./store/TreeReducer";
 import './style/style.css'
 
 function App() {
 
-  const [data,setData]=useState([])
+  const dispatch=useDispatch()
+  const treeData=useSelector(state=>state.tree.tree)
+
+  const setReduxTree=(data)=>{
+    dispatch(setTreeAction(data))
+  }
+
 
   useEffect(()=>{
-    getTreeData().then(data=>setData(data))
+      getTreeData().then(data=>setReduxTree(data))
   },[])
 
   return (
     <div className="App">
-      <Tree data={data}/>
+      <Tree data={treeData}/>
     </div>
   );
 }

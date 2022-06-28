@@ -3,62 +3,52 @@ const treeData=()=>{
     return[
         {
             id:1,
-            parentId:null,
             name:'Фаза 1',
             children:[
                 {
-                    id:2,
-                    parentId:1,
+                    id:2, 
                     name:'Выход 1'
                 },
                 {
-                    id:3,
-                    parentId:1,
+                    id:3,  
                     name:'Выход 2'
                 },
                 {
-                    id:31,
-                    parentId:1,
+                    id:31,      
                     name:'Выход 3'
                 },
-
             ]
         },
         {
             id:4,
-            parentId:null,
             name:'Фаза 1',
             children:[
                 {
                     id:5,
-                    parentId:4,
                     name:'Фаза 1 1',
                     children:[
                         {
-                            id:6,
-                            parentId:5,
+                            id:6,    
                             name:'Выход 1',
                         }
                     ]
                 },
                 {
                     id:7,
-                    parentId:4,
+                   
                     name:'Фаза 1 2',
                     children:[
                         {
-                            id:8,
-                            parentId:7,
+                            id:8,    
                             name:'Выход 1',
                         },
                         {
                             id:15,
-                            parentId:7,
                             name:"Фаза 1 2 1",
                             children:[
                                 {
                                     id:17,
-                                    parentId:15,
+                                  
                                     name:'Выход 1 2'
                                 }
                             ]
@@ -69,22 +59,19 @@ const treeData=()=>{
         },
         {
             id:9,
-            parentId:null,
+           
             name:'Датчики окруж. среды',
             children:[
                 {
-                    id:12,
-                    parentId:9,
+                    id:12, 
                     name:'Датчик твердых частиц',
                 },
                 {
-                    id:13,
-                    parentId:9,
+                    id:13, 
                     name:'Датчик освещенности',
                 },
                 {
                     id:14,
-                    parentId:9,
                     name:'Датчик перепада давления',
                 }
             ]

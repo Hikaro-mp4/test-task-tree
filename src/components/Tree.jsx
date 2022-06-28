@@ -1,15 +1,22 @@
-import React, { useState } from 'react'
+import React, { useEffect } from 'react'
+import { connect } from 'react-redux'
+import { bindActionCreators } from 'redux'
+import { getTreeData } from '../Api/treeApi'
+import * as treeActions from '../store/TreeReducer'
 
-const Tree = ({data}) => {
-    
-    const[active,setActive]=useState(null)
-    const[select,setSelect]=useState(null)
-    
-    const handlerClick=(e,id,parentId,children)=>{
+const Tree = (props) => {
+
+    useEffect(()=>{
+        getTreeData().then(data=>setTreeAction(data))
+    },[])
+
+    const {data,active,select}=props
+    const {setTreeAction,setActiveAction,setSelectAction}=props.actions
+
+    const handlerClick=(e,id,children)=>{
         e.stopPropagation()
-        setActive(prev=>!children?prev:prev!==id?id:parentId?parentId:null)
-        setSelect(!children?id:null)
-        
+        setActiveAction(!children?active:active!==id?id:null)
+        setSelectAction(!children?id:null)
     }
 
     const checkChildActive=(elem)=>{
@@ -31,12 +38,12 @@ const Tree = ({data}) => {
     }
 
     const Element=({data})=>{
-        const {id,parentId,name,children}=data
+        const {id,name,children}=data
 
         return <div className='tree__branch' 
                     >
             <span 
-                onClick={(e)=>handlerClick(e,id,parentId,children)}
+                onClick={(e)=>handlerClick(e,id,children)}
                 className={children?
                         (active===id || checkChildActive(data))?
                         'tree__name parent-style active':
@@ -77,4 +84,13 @@ const Tree = ({data}) => {
     )
 }
 
-export default Tree
+export default connect(
+    state=>({
+        data:state.tree.tree,
+        active:state.tree.active,
+        select:state.tree.select
+    }),
+    dispatch=>({
+        actions:bindActionCreators(treeActions,dispatch)
+    })
+)(Tree)

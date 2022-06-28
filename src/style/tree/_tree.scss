@@ -13,13 +13,14 @@
 .tree{  
     background-color:$content_color;
     display: inline-block;
-    padding: 20px;
+    padding: 20px 60px;
     border-radius:10px ;
     box-shadow: 2px 2px 8px black;
     
     &__name{
         cursor: pointer;
         line-height: 26px;
+        padding: 0px 10px;
         &.active{
             color:$c_active;
             background-color: $bg_active;

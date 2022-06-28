@@ -19,15 +19,22 @@
     
     &__name{
         cursor: pointer;
-        &.parent-style{
-            font-weight: bold;
-            font-size: larger;
-        }
 
         &.active{
             color:$c_active;
             background-color: $bg_active;
             border-radius:6px;
+        }
+        
+        &.parent-style{
+            font-weight: bold;
+            font-size: larger;
+
+            &.active{
+                color: black;
+                border: solid 1px black;
+                background-color: rgba(0, 0, 0, 0);
+            }
         }
     }
 
@@ -62,18 +69,18 @@
         }
 
         &.active{
-            background-color: $bg_active;
+            // background-color: $bg_active;
            
             &::before{
                 content: '';
                 @include arrow(12px,4px,45deg);
-                background-color:$c_active;
+                // background-color:$c_active;
             }
     
             &::after{
                 content: '';
                 @include arrow(12px,7px,-45deg);
-                background-color:$c_active;
+                // background-color:$c_active;
             }
             
         }

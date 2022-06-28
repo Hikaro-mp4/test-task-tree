@@ -11,15 +11,21 @@
   cursor: pointer;
 }
 
+.tree__name.active {
+  color: white;
+  background-color: #5c5c5c;
+  border-radius: 6px;
+}
+
 .tree__name.parent-style {
   font-weight: bold;
   font-size: larger;
 }
 
-.tree__name.active {
-  color: white;
-  background-color: #5c5c5c;
-  border-radius: 6px;
+.tree__name.parent-style.active {
+  color: black;
+  border: solid 1px black;
+  background-color: rgba(0, 0, 0, 0);
 }
 
 .tree__children {
@@ -68,10 +74,6 @@
           transform: rotate(-45deg);
 }
 
-.tree__arrow.active {
-  background-color: #5c5c5c;
-}
-
 .tree__arrow.active::before {
   content: '';
   display: block;
@@ -83,7 +85,6 @@
   background-color: black;
   -webkit-transform: rotate(45deg);
           transform: rotate(45deg);
-  background-color: white;
 }
 
 .tree__arrow.active::after {
@@ -97,7 +98,6 @@
   background-color: black;
   -webkit-transform: rotate(-45deg);
           transform: rotate(-45deg);
-  background-color: white;
 }
 
 body {

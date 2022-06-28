@@ -9,6 +9,7 @@
 
 .tree__name {
   cursor: pointer;
+  line-height: 26px;
 }
 
 .tree__name.active {

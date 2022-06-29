@@ -8,25 +8,51 @@ const Tree = (props) => {
 
     useEffect(()=>{
         getTreeData().then(data=>setTreeAction(data))
+      
     },[])
 
-    const {data,active,select}=props
-    const {setTreeAction,setActiveAction,setSelectAction}=props.actions
+    const {data,selected}=props
+    const {setTreeAction,setSelectedAction}=props.actions
 
-    const handlerClick=(e,id,children)=>{
+    const handlerClick=(e,branch)=>{
         e.stopPropagation()
-        setActiveAction(!children?active:active!==id?id:null)
-        setSelectAction(!children?id:null)
+        setSelectedAction(checkChildSelected(branch)||selected==branch.id?
+                                getParent(data,branch.id): 
+                                branch.id)
+       
     }
 
-    const checkChildActive=(elem)=>{
+    const getParentOfSelectedChild=(branch,selected)=>{
+        let parent=0
+
+        const recursion=(branch)=>{       
+            if(!parent){
+                if(!branch.children)return 0
+               
+                branch.children.map(child=>{
+                    if(child.id===selected)parent=branch.id
+                    else if(child.children){
+                        recursion(child)
+                    }
+                })
+            }
+        }
+        recursion(branch)
+        return parent
+    }
+
+    const getParent=(tree,selected)=>{
+        return [...tree.map(branch=>getParentOfSelectedChild(branch,selected))].find(el=>el)
+    }
+
+    const checkChildSelected=(elem)=>{
         let found=false
 
         const recursion=(elem)=>{
             if(!found){
                 if(!elem.children)return false
                 elem.children.map(child=>{
-                    if(child.id===active)found=true
+                    if(child.id===selected)found=true
                     else if(child.children){
                         recursion(child)
                     }
@@ -43,18 +69,18 @@ const Tree = (props) => {
         return <div className='tree__branch' 
                     >
             <span 
-                onClick={(e)=>handlerClick(e,id,children)}
+                onClick={(e)=>handlerClick(e,data)}
                 className={children?
-                        (active===id || checkChildActive(data))?
+                        (selected===id || checkChildSelected(data))?
                         'tree__name parent-style active':
                             'tree__name parent-style':
-                            select===id?
+                            selected===id?
                             'tree__name active':
                             'tree__name'}
                 >
                    {children &&  
                         <span 
-                        className={(active===id || checkChildActive(data))?
+                        className={(selected===id || checkChildSelected(data))?
                         'tree__arrow active':'tree__arrow'}
                         >
                         </span>}
@@ -62,7 +88,7 @@ const Tree = (props) => {
             </span>
             {children &&
                 <span 
-                    className={active===id || checkChildActive(data)?
+                    className={selected===id || checkChildSelected(data)?
                     'tree__children active':
                     'tree__children'}
                 >
@@ -87,8 +113,7 @@ const Tree = (props) => {
 export default connect(
     state=>({
         data:state.tree.tree,
-        active:state.tree.active,
-        select:state.tree.select
+        selected:state.tree.selected
     }),
     dispatch=>({
         actions:bindActionCreators(treeActions,dispatch)
